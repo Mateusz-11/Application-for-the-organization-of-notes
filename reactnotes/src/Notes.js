@@ -1,6 +1,6 @@
 import React from "react";
-
 import { Table } from "react-bootstrap";
+import Note from "./Note";
 
 const noteList = [
 	{
@@ -29,6 +29,12 @@ function Notes() {
 						<th>Content</th>
 						<th>Date</th>
 					</tr>
+					<Note
+						title='Go to the library'
+						category='Education'
+						content='Poetry'
+						date={new Date("2023-04-26")}
+					/>
 				</thead>
 				<tbody>body</tbody>
 			</Table>
