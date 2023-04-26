@@ -29,18 +29,19 @@ function Notes() {
 						<th>Content</th>
 						<th>Date</th>
 					</tr>
-					{noteList.map((note) => {
+					{noteList.map((note, index) => {
 						return (
 							<Note
 								title={note.title}
 								category={note.category}
 								content={note.content}
 								date={note.date}
+								key={index}
 							/>
 						);
 					})}
 				</thead>
-				<tbody>body</tbody>
+				<tbody></tbody>
 			</Table>
 		</div>
 	);
