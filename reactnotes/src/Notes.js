@@ -29,12 +29,16 @@ function Notes() {
 						<th>Content</th>
 						<th>Date</th>
 					</tr>
-					<Note
-						title='Go to the library'
-						category='Education'
-						content='Poetry'
-						date={new Date("2023-04-26")}
-					/>
+					{noteList.map((note) => {
+						return (
+							<Note
+								title={note.title}
+								category={note.category}
+								content={note.content}
+								date={note.date}
+							/>
+						);
+					})}
 				</thead>
 				<tbody>body</tbody>
 			</Table>
