@@ -1,6 +1,8 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import Note from "./Note";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class Notes extends React.Component {
 	constructor(props) {
@@ -23,6 +25,64 @@ class Notes extends React.Component {
 		};
 	}
 
+	onChange(e) {
+		const name = e.target.id;
+		this.setState({
+			[name]: e.target.value,
+		});
+	}
+
+	onClick() {
+		confirmAlert({
+			customUI: ({ onClose }) => {
+				return (
+					<div>
+						<h1>Add content to note</h1>
+						<p>
+							<textarea
+								cols='50'
+								rows='10'
+								id='content'
+								defaultValue={this.state.content}
+								onChange={(e) => this.onChange(e)}></textarea>
+						</p>
+						<Button
+							style={{ float: "right" }}
+							variant='danger'
+							onClick={onClose}></Button>
+					</div>
+				);
+			},
+		});
+	}
+
+	addNote() {
+		this.setState((state) => {
+			const notes = state.noteList;
+			const date = state.date === undefined ? "" : new Date(state.date);
+			const time = state.time === undefined ? "" : state.time;
+			if (state.category === "to do") {
+				notes.push({
+					title: state.title,
+					category: state.category,
+					content: state.content,
+					date: date,
+					time: time,
+					status: false,
+				});
+			} else {
+				notes.push({
+					title: state.title,
+					category: state.category,
+					content: state.content,
+					date: date,
+					time: time,
+					status: undefined,
+				});
+			}
+			return { noteList: notes };
+		});
+	}
 	render() {
 		return (
 			<div>
@@ -83,16 +143,32 @@ class Notes extends React.Component {
 							</td>
 							<td>
 								{this.state.content !== "" ? (
-									<Button variant='primary' onClick={() => onClick()}>
+									<Button variant='primary' onClick={() => this.onClick()}>
 										Edit content
 									</Button>
 								) : (
-									<Button variant='succes' onClick={() => onClick()}>
+									<Button variant='succes' onClick={() => this.onClick()}>
 										Add content
 									</Button>
 								)}
 							</td>
-							<td></td>
+							<td>
+								<input
+									type='date'
+									id='date'
+									onChange={(e) => this.onChange(e)}
+								/>
+								<input
+									type='time'
+									id='time'
+									onChange={(e) => this.onChange(e)}
+								/>
+							</td>
+							<td>
+								<Button variant='secondary' onClick={() => this.addNote()}>
+									Add note
+								</Button>
+							</td>
 						</tr>
 					</tbody>
 				</Table>
