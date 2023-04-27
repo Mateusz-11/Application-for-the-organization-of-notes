@@ -14,14 +14,23 @@ class Notes extends React.Component {
 					category: "Hobby",
 					content: "Leg day",
 					date: new Date("2023-04-25"),
+					status: undefined,
+					time: "",
 				},
 				{
 					title: "Go to the library",
 					category: "Education",
 					content: "Poetry",
 					date: new Date("2023-04-26"),
+					status: undefined,
+					time: "",
 				},
 			],
+			title: "",
+			category: "",
+			content: "",
+			date: undefined,
+			time: undefined,
 		};
 	}
 
@@ -86,14 +95,14 @@ class Notes extends React.Component {
 	render() {
 		return (
 			<div>
-				(<h3>List of notes</h3>)
+				<h3>List of notes</h3>
 				<Table striped bordered>
 					<thead>
 						<tr>
 							<th>Title</th>
 							<th>Category</th>
 							<th>Content</th>
-							<th>Date</th>
+							<th>Action</th>
 						</tr>
 						{this.state.noteList.map((note, index) => {
 							return (
@@ -109,7 +118,7 @@ class Notes extends React.Component {
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan='5' style={{ textAlign: "center" }}>
+							<td colSpan='5' style={{ textAlign: "center" }}>
 								<i>
 									<b>Add new note</b>
 								</i>
