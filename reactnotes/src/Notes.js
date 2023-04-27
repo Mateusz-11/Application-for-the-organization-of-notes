@@ -14,12 +14,20 @@ class Notes extends React.Component {
 					category: "Hobby",
 					content: "Leg day",
 					date: new Date("2023-04-25"),
-					status: undefined,
+					status: true,
 					time: "",
 				},
 				{
 					title: "Go to the library",
 					category: "Education",
+					content: "Poetry",
+					date: new Date("2023-04-26"),
+					status: false,
+					time: "",
+				},
+				{
+					title: "Go to the library",
+					category: "To do",
 					content: "Poetry",
 					date: new Date("2023-04-26"),
 					status: undefined,
@@ -112,6 +120,7 @@ class Notes extends React.Component {
 									content={note.content}
 									date={note.date}
 									key={index}
+									status={note.status}
 								/>
 							);
 						})}
