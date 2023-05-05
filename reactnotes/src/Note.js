@@ -21,17 +21,17 @@ const Note = (props) => {
 						<div className='justifyColumn'>
 							<div>
 								<Icon.List size={30} color='green' className='Item' />
-								<i>Done it</i>
+								<i>Done</i>
 							</div>
 							<div styl={{ display: "block" }}>
 								<Icon.Bell size={30} color='999900' className='Item' />
-								<i>Remind it</i>
+								<i>Remind</i>
 							</div>
 						</div>
 						<div className='justifyColumn'>
 							<div>
 								<Icon.Pencil size={30} color='blue' className='Item' />
-								<i>Edit it</i>
+								<i>Edit</i>
 							</div>
 							<div styl={{ display: "block" }}>
 								<Icon.Trash size={30} color='black' className='Item' />
